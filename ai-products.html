@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Products & Solutions - Gocreative</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7B2CBF;
+            --primary-dark: #5A189A;
+            --primary-light: #9D4EDD;
+            --secondary: #E0AAFF;
+            --accent: #FF006E;
+            --bg-light: #FFFFFF;
+            --bg-card: #F8F9FA;
+            --bg-elevated: #F1F3F5;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+            --border: rgba(123, 44, 191, 0.15);
+            --gradient: linear-gradient(135deg, #7B2CBF 0%, #E0AAFF 50%, #FF006E 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(123, 44, 191, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.4);
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F1F3F5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(123, 44, 191, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(123, 44, 191, 0.15);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .features-section {
+            background: var(--bg-elevated);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            padding: 32px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .feature-icon-small {
+            width: 48px;
+            height: 48px;
+            background: rgba(123, 44, 191, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .process-section {
+            background: var(--bg-light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .tech-section {
+            background: var(--bg-elevated);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .tech-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .tech-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .tech-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .cta-card {
+            background: var(--gradient);
+            border-radius: 24px;
+            padding: 80px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-card p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .cta-card .btn {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            font-size: 16px;
+        }
+
+        .cta-card .btn:hover {
+            background: var(--bg-elevated);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-card {
+                padding: 60px 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <!-- <div class="logo-icon"><i class="fas fa-bolt"></i></div> -->
+                <span>Gocreative</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#portfolio">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#services">Services</a>
+                <span>/</span>
+                <span>AI Products & Solutions</span>
+            </div>
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-robot"></i>
+                    AI Products & Solutions
+                </div>
+                <h1>Transform Your Business with <span class="gradient-text">Intelligent AI Solutions</span></h1>
+                <p>Harness the power of artificial intelligence to automate processes, gain insights, and deliver exceptional experiences. From custom AI models to chatbots and predictive analytics, we build AI solutions that drive real business value.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Start Your AI Project</a>
+                    <a href="#services" class="btn btn-outline">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our AI Products & Solutions</h2>
+            <p class="section-subtitle">Comprehensive AI capabilities designed to solve complex business challenges and unlock new opportunities.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Custom AI Model Development</h3>
+                    <p>Build and fine-tune AI models tailored to your specific use case, from classification to generation, optimized for your data and requirements.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Chatbots & Virtual Assistants</h3>
+                    <p>Deploy intelligent conversational AI that understands context, handles complex queries, and provides 24/7 customer support with natural language understanding.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Predictive Analytics & Forecasting</h3>
+                    <p>Leverage machine learning to predict trends, forecast demand, and make data-driven decisions that give you a competitive advantage.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Computer Vision Solutions</h3>
+                    <p>Implement image recognition, object detection, and visual analysis systems for quality control, security, and automated inspection.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Extract insights from text, automate document processing, perform sentiment analysis, and enable semantic search capabilities.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>AI-Powered Automation</h3>
+                    <p>Automate repetitive tasks, streamline workflows, and optimize operations with intelligent automation that learns and adapts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our AI Solutions</h2>
+            <p class="section-subtitle">We deliver AI that's practical, scalable, and aligned with your business objectives.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Business-First Approach</h4>
+                        <p>We focus on solving real business problems, not just implementing technology for its own sake.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Data Quality Focus</h4>
+                        <p>We help you prepare, clean, and structure your data for optimal AI performance and accuracy.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Ethical AI</h4>
+                        <p>We build AI systems with fairness, transparency, and accountability at their core.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Production-Ready</h4>
+                        <p>Our AI solutions are built for scale, with robust infrastructure and monitoring in place.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Continuous Learning</h4>
+                        <p>AI models that improve over time through feedback loops and ongoing optimization.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-small">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Easy Integration</h4>
+                        <p>Seamlessly integrate AI capabilities into your existing systems and workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our AI Development Process</h2>
+            <p class="section-subtitle">A systematic approach to building AI solutions that deliver measurable results.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Problem Definition</h3>
+                    <p>Identify the business challenge, define success metrics, and assess AI feasibility.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Data Assessment</h3>
+                    <p>Evaluate data quality, quantity, and relevance. Prepare datasets for training.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Model Development</h3>
+                    <p>Build, train, and fine-tune AI models using appropriate algorithms and techniques.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Testing & Validation</h3>
+                    <p>Rigorously test model performance, accuracy, and fairness across various scenarios.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Deployment</h3>
+                    <p>Deploy models to production with proper infrastructure, APIs, and monitoring.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h3>Optimization</h3>
+                    <p>Monitor performance, gather feedback, and continuously improve model accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="container">
+            <h2 class="section-title">AI Technologies We Use</h2>
+            <p class="section-subtitle">Cutting-edge frameworks and tools that power intelligent solutions.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>TensorFlow / PyTorch</h4>
+                </div>
+
+                <div class="tech-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>OpenAI / GPT</h4>
+                </div>
+
+                <div class="tech-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h4>Scikit-learn</h4>
+                </div>
+
+                <div class="tech-card">
+                    <i class="fas fa-cloud"></i>
+                    <h4>AWS SageMaker</h4>
+                </div>
+
+                <div class="tech-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Hugging Face</h4>
+                </div>
+
+                <div class="tech-card">
+                    <i class="fas fa-eye"></i>
+                    <h4>OpenCV / YOLO</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Leverage AI for Your Business?</h2>
+                <p>Let's discuss how artificial intelligence can transform your operations and create new opportunities.</p>
+                <a href="https://wa.link/j5ergx" class="btn">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Gocreative</h3>
+                    <p>We create innovative digital solutions that transform businesses and deliver exceptional results. Let's build something amazing together.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="custom-software.html">Custom Software</a></li>
+                        <li><a href="ai-products.html">AI Solutions</a></li>
+                        <li><a href="ai-workflow.html">AI Integration</a></li>
+                        <li><a href="enterprise-software.html">Enterprise Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#portfolio">Our Work</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+              
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:gocreativeglobal@gmail.com">hello@gocreative.com</a></li>
+                        <li><a href="tel:+2348085398445">+234 808 539 8445</a></li>
+                        <li>Federal Housing Estate<br>Calabar, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gocreative. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enterprise software solutions including ERP, CRM, and business intelligence platforms. Streamline operations and drive growth with custom enterprise systems.">
+    <title>Enterprise Software Solutions - Gocreative</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7B2CBF;
+            --primary-dark: #5A189A;
+            --primary-light: #9D4EDD;
+            --secondary: #E0AAFF;
+            --accent: #FF006E;
+            --bg-light: #FFFFFF;
+            --bg-card: #F8F9FA;
+            --bg-elevated: #F1F3F5;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+            --border: rgba(123, 44, 191, 0.15);
+            --gradient: linear-gradient(135deg, #7B2CBF 0%, #E0AAFF 50%, #FF006E 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(123, 44, 191, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.4);
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F1F3F5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(123, 44, 191, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(123, 44, 191, 0.15);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .service-features {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .service-features li {
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .features-section {
+            background: var(--bg-elevated);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 24px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(123, 44, 191, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .comparison-section {
+            background: var(--bg-light);
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            background: var(--bg-elevated);
+            padding: 24px 32px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 24px 32px;
+            border-top: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .comparison-row:hover {
+            background: var(--bg-elevated);
+        }
+
+        .check-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .cross-icon {
+            color: var(--text-secondary);
+            opacity: 0.3;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .process-section {
+            background: var(--bg-elevated);
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-phase {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .timeline-phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-marker {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .phase-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .phase-duration {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .phase-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+
+        .phase-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .phase-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .industries-section {
+            background: var(--bg-light);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .industry-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .industry-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .industry-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .industry-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: var(--bg-elevated);
+            text-align: center;
+        }
+
+        .cta-card {
+            background: var(--gradient);
+            border-radius: 24px;
+            padding: 80px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-card p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .cta-card .btn {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            font-size: 16px;
+        }
+
+        .cta-card .btn:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 2fr 1fr 1fr;
+                font-size: 0.9rem;
+                padding: 16px 20px;
+            }
+
+            .timeline-phase {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-card {
+                padding: 60px 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <!-- <div class="logo-icon"><i class="fas fa-bolt"></i></div> -->
+                <span>Gocreative</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#portfolio">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#services">Services</a>
+                <span>/</span>
+                <span>Enterprise Software</span>
+            </div>
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-building"></i>
+                    Enterprise Software Solutions
+                </div>
+                <h1>Scale Your Business with <span class="gradient-text">Enterprise Systems</span></h1>
+                <p>Comprehensive enterprise solutions designed to streamline operations, connect departments, and drive growth at scale. From ERP to CRM, we build systems that power your organization.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Discuss Your Needs</a>
+                    <a href="#services" class="btn btn-outline">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Enterprise Solutions We Deliver</h2>
+            <p class="section-subtitle">Comprehensive software systems that unify your business operations and accelerate growth.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>ERP Systems</h3>
+                    <p>Unified platform to manage your entire business including finance, operations, procurement, and reporting.</p>
+                    <ul class="service-features">
+                        <li>Financial management & accounting</li>
+                        <li>Inventory & warehouse management</li>
+                        <li>Production planning & MRP</li>
+                        <li>Multi-company & multi-currency</li>
+                        <li>Real-time analytics & reporting</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>CRM Solutions</h3>
+                    <p>Centralized customer relationship management to track interactions, sales, and service delivery.</p>
+                    <ul class="service-features">
+                        <li>Lead & opportunity management</li>
+                        <li>Sales pipeline tracking</li>
+                        <li>Customer service ticketing</li>
+                        <li>Marketing automation</li>
+                        <li>360° customer view</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Data-driven insights and visualization platforms for informed decision-making across your organization.</p>
+                    <ul class="service-features">
+                        <li>Interactive dashboards</li>
+                        <li>Custom reports & KPIs</li>
+                        <li>Predictive analytics</li>
+                        <li>Data warehousing</li>
+                        <li>Mobile BI access</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Supply Chain Management</h3>
+                    <p>End-to-end supply chain visibility and optimization from procurement to delivery.</p>
+                    <ul class="service-features">
+                        <li>Demand forecasting</li>
+                        <li>Supplier management</li>
+                        <li>Logistics & transportation</li>
+                        <li>Order fulfillment tracking</li>
+                        <li>Inventory optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>HR Management Systems</h3>
+                    <p>Complete HR solution covering employee lifecycle from recruitment to retirement.</p>
+                    <ul class="service-features">
+                        <li>Applicant tracking system</li>
+                        <li>Payroll & benefits management</li>
+                        <li>Performance reviews</li>
+                        <li>Time & attendance tracking</li>
+                        <li>Employee self-service portal</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Custom Integrations</h3>
+                    <p>Connect disparate systems and create unified workflows across your enterprise technology stack.</p>
+                    <ul class="service-features">
+                        <li>API development & integration</li>
+                        <li>Data synchronization</li>
+                        <li>Legacy system connectivity</li>
+                        <li>Third-party app integration</li>
+                        <li>Middleware solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Enterprise-Grade Features</h2>
+            <p class="section-subtitle">Built for performance, security, and scalability at enterprise level.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Scalable Architecture</h4>
+                        <p>Systems designed to grow with your business, handling increased users, data, and transactions seamlessly.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Enterprise Security</h4>
+                        <p>Multi-layer security with encryption, role-based access, audit trails, and compliance with industry standards.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Modular Design</h4>
+                        <p>Flexible architecture allowing you to implement modules as needed and customize to your workflows.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Mobile Access</h4>
+                        <p>Access your enterprise systems anywhere with responsive web design and native mobile applications.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Multi-Location Support</h4>
+                        <p>Manage multiple offices, warehouses, and locations from a single centralized system.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Data Management</h4>
+                        <p>Advanced data handling with backup, recovery, archiving, and data integrity safeguards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">Custom vs Off-the-Shelf Solutions</h2>
+            <p class="section-subtitle">Why custom enterprise software delivers superior value for growing businesses.</p>
+            
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div>Feature</div>
+                    <div style="text-align: center;">Custom Built</div>
+                    <div style="text-align: center;">Off-the-Shelf</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div>Tailored to your workflows</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Competitive advantage</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>No recurring license fees</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Unlimited customization</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Own your data & IP</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Scales without extra costs</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Integration flexibility</div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                </div>
+
+                <div class="comparison-row">
+                    <div>Faster deployment</div>
+                    <div class="cross-icon"><i class="fas fa-times-circle"></i></div>
+                    <div class="check-icon"><i class="fas fa-check-circle"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Implementation Process</h2>
+            <p class="section-subtitle">A structured approach to enterprise software implementation that ensures success.</p>
+            
+            <div class="process-timeline">
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">1</div>
+                        
+                    </div>
+                    <div class="phase-content">
+                        <h3>Discovery & Analysis</h3>
+                        <p>Comprehensive assessment of your current systems, workflows, and business requirements. Define project scope and success criteria.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">2</div>
+                        
+                    </div>
+                    <div class="phase-content">
+                        <h3>System Design</h3>
+                        <p>Create detailed technical architecture, database schema, and user interface designs. Plan integrations and data migration strategy.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">3</div>
+                       
+                    </div>
+                    <div class="phase-content">
+                        <h3>Development & Integration</h3>
+                        <p>Build core modules, develop custom features, and integrate with existing systems. Regular demos and feedback sessions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">4</div>
+                       
+                    </div>
+                    <div class="phase-content">
+                        <h3>Testing & Training</h3>
+                        <p>Comprehensive testing including UAT. Train administrators and end-users. Prepare documentation and support materials.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">5</div>
+                       
+                    </div>
+                    <div class="phase-content">
+                        <h3>Deployment & Go-Live</h3>
+                        <p>Migrate data, deploy to production, and transition operations. Provide on-site support during launch period.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">6</div>
+                        <div class="phase-duration">Ongoing</div>
+                    </div>
+                    <div class="phase-content">
+                        <h3>Support & Enhancement</h3>
+                        <p>Continuous monitoring, maintenance, and optimization. Regular updates and feature additions based on evolving needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries-section">
+        <div class="container">
+            <h2 class="section-title">Industries We Serve</h2>
+            <p class="section-subtitle">Deep expertise across multiple sectors with solutions tailored to industry-specific needs.</p>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4>Manufacturing</h4>
+                    <p>Production planning, inventory control, and quality management systems</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h4>Retail & E-commerce</h4>
+                    <p>Point of sale, inventory management, and omnichannel solutions</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h4>Healthcare</h4>
+                    <p>Patient management, EMR systems, and regulatory compliance</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h4>Financial Services</h4>
+                    <p>Core banking, accounting, and risk management platforms</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Education</h4>
+                    <p>Student information systems and learning management platforms</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h4>Logistics</h4>
+                    <p>Transportation management and warehouse optimization</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Real Estate</h4>
+                    <p>Property management and lease administration systems</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h4>Hospitality</h4>
+                    <p>Booking systems, guest management, and operations platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Transform Your Enterprise?</h2>
+                <p>Let's discuss how custom enterprise software can streamline your operations and drive growth.</p>
+                <a href="https://wa.link/qk8xz0" class="btn">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Gocreative</h3>
+                    <p>We create innovative digital solutions that transform businesses and deliver exceptional results. Let's build something amazing together.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="custom-software.html">Custom Software</a></li>
+                        <li><a href="ai-products.html">AI Solutions</a></li>
+                        <li><a href="ai-workflow.html">AI Integration</a></li>
+                        <li><a href="enterprise-software.html">Enterprise Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#portfolio">Our Work</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+              
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:gocreativeglobal@gmail.com">hello@gocreative.com</a></li>
+                        <li><a href="tel:+2348085398445">+234 808 539 8445</a></li>
+                        <li>Federal Housing Estate<br>Calabar, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gocreative. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

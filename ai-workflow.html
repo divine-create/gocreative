@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflow Integration - Gocreative</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7B2CBF;
+            --primary-dark: #5A189A;
+            --primary-light: #9D4EDD;
+            --secondary: #E0AAFF;
+            --accent: #FF006E;
+            --bg-light: #FFFFFF;
+            --bg-card: #F8F9FA;
+            --bg-elevated: #F1F3F5;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+            --border: rgba(123, 44, 191, 0.15);
+            --gradient: linear-gradient(135deg, #7B2CBF 0%, #E0AAFF 50%, #FF006E 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(123, 44, 191, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.4);
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F8F9FA 0%, #F1F3F5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(123, 44, 191, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(123, 44, 191, 0.15);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .service-features {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .service-features li {
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .benefits-section {
+            background: var(--bg-elevated);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .use-cases-section {
+            background: var(--bg-light);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .use-case-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .use-case-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .use-case-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(123, 44, 191, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .use-case-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .use-case-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .use-case-results {
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .result-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .process-section {
+            background: var(--bg-elevated);
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-phase {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .timeline-phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-marker {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 30px rgba(123, 44, 191, 0.3);
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .phase-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+
+        .phase-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .phase-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .integrations-section {
+            background: var(--bg-light);
+        }
+
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .integration-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .integration-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(123, 44, 191, 0.1);
+        }
+
+        .integration-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .integration-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: var(--bg-elevated);
+            text-align: center;
+        }
+
+        .cta-card {
+            background: var(--gradient);
+            border-radius: 24px;
+            padding: 80px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-card p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
+        }
+
+        .cta-card .btn {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            font-size: 16px;
+        }
+
+        .cta-card .btn:hover {
+            background: var(--bg-elevated);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--bg-light);
+            border-top: 1px solid var(--border);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-card {
+                padding: 60px 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-phase {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <!-- <div class="logo-icon"><i class="fas fa-bolt"></i></div> -->
+                <span>Gocreative</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#portfolio">Work</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#services">Services</a>
+                <span>/</span>
+                <span>AI Workflow Integration</span>
+            </div>
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-project-diagram"></i>
+                    AI Workflow Integration
+                </div>
+                <h1>Seamlessly Integrate AI Into <span class="gradient-text">Your Existing Workflows</span></h1>
+                <p>Transform how your team works by embedding intelligent automation into your current processes. We connect AI capabilities with your existing tools, systems, and workflows to boost productivity without disrupting operations.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Discuss Your Workflow</a>
+                    <a href="#services" class="btn btn-outline">See Solutions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">AI Integration Solutions</h2>
+            <p class="section-subtitle">Connect AI capabilities with your existing systems to automate tasks and enhance decision-making.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Intelligent Process Automation</h3>
+                    <p>Automate repetitive workflows with AI that understands context, makes decisions, and handles exceptions.</p>
+                    <ul class="service-features">
+                        <li>Document processing & extraction</li>
+                        <li>Email classification & routing</li>
+                        <li>Data entry automation</li>
+                        <li>Report generation</li>
+                        <li>Task prioritization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>AI-Powered Chatbot Integration</h3>
+                    <p>Deploy conversational AI across your platforms to handle customer inquiries, support tickets, and internal requests.</p>
+                    <ul class="service-features">
+                        <li>Website chat integration</li>
+                        <li>Slack & Teams bots</li>
+                        <li>WhatsApp & SMS automation</li>
+                        <li>Help desk integration</li>
+                        <li>Multi-language support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Smart Data Processing</h3>
+                    <p>Extract insights from unstructured data and automate data workflows with intelligent processing.</p>
+                    <ul class="service-features">
+                        <li>Automated data extraction</li>
+                        <li>Document classification</li>
+                        <li>Sentiment analysis</li>
+                        <li>Data enrichment</li>
+                        <li>Quality validation</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics Integration</h3>
+                    <p>Add forecasting and prediction capabilities to your existing dashboards and reporting systems.</p>
+                    <ul class="service-features">
+                        <li>Demand forecasting</li>
+                        <li>Churn prediction</li>
+                        <li>Anomaly detection</li>
+                        <li>Risk assessment</li>
+                        <li>Trend analysis</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>AI Email & Communication Tools</h3>
+                    <p>Enhance email workflows with AI-powered drafting, summarization, and intelligent routing.</p>
+                    <ul class="service-features">
+                        <li>Email auto-responses</li>
+                        <li>Smart summarization</li>
+                        <li>Priority inbox sorting</li>
+                        <li>Meeting scheduling</li>
+                        <li>Follow-up reminders</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>API & System Connectors</h3>
+                    <p>Build custom integrations that connect AI models with your CRM, ERP, and business tools.</p>
+                    <ul class="service-features">
+                        <li>Salesforce integration</li>
+                        <li>HubSpot automation</li>
+                        <li>Zapier workflows</li>
+                        <li>Custom API endpoints</li>
+                        <li>Webhook triggers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Benefits of AI Workflow Integration</h2>
+            <p class="section-subtitle">Quantifiable improvements that drive real business value.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Save 40% Time</h3>
+                    <p>Reduce time spent on manual, repetitive tasks by automating with AI.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Lower Costs</h3>
+                    <p>Decrease operational expenses through intelligent automation and efficiency gains.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Boost Productivity</h3>
+                    <p>Free your team to focus on high-value work while AI handles routine tasks.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Improve Accuracy</h3>
+                    <p>Eliminate human error in data processing and decision-making workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases-section">
+        <div class="container">
+            <h2 class="section-title">Real-World Use Cases</h2>
+            <p class="section-subtitle">See how AI workflow integration transforms operations across different business functions.</p>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Marketing Campaigns</h3>
+                    </div>
+                    <p>Automatically segment audiences, personalize content, optimize send times, and analyze campaign performance. AI generates subject lines and suggests improvements based on engagement data.</p>
+                    <div class="use-case-results">
+                        <div class="result-label">Performance</div>
+                        <div class="result-value">45% increase in conversion rates</div>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Order Management</h3>
+                    </div>
+                    <p>Process orders from multiple channels, verify inventory, detect fraud, route to fulfillment centers, and send tracking updates—all integrated with your existing systems.</p>
+                    <div class="use-case-results">
+                        <div class="result-label">Speed</div>
+                        <div class="result-value">10x faster order processing</div>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Sales Forecasting</h3>
+                    </div>
+                    <p>AI analyzes historical data, market trends, and external factors to generate accurate forecasts. Automatically updates your CRM and planning tools with predictions.</p>
+                    <div class="use-case-results">
+                        <div class="result-label">Accuracy</div>
+                        <div class="result-value">92% forecast accuracy achieved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Integration Process</h2>
+            <p class="section-subtitle">A structured approach to seamlessly embed AI into your workflows without disruption.</p>
+            
+            <div class="process-timeline">
+                <div class="timeline-phase">
+                    <div class="phase-marker">1</div>
+                    <div class="phase-content">
+                        <h3>Workflow Analysis</h3>
+                        <p>We map your current workflows, identify bottlenecks, and pinpoint opportunities where AI can add the most value. We document your systems, tools, and data sources.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">2</div>
+                    <div class="phase-content">
+                        <h3>Solution Design</h3>
+                        <p>Design the AI integration architecture, select appropriate models and tools, and plan the data flow. Create detailed integration specifications with your team's input.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">3</div>
+                    <div class="phase-content">
+                        <h3>Development & Testing</h3>
+                        <p>Build the integrations, train AI models on your data, and conduct thorough testing. Ensure seamless communication between AI and your existing systems.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">4</div>
+                    <div class="phase-content">
+                        <h3>Pilot & Refinement</h3>
+                        <p>Deploy to a small group or process, gather feedback, monitor performance, and make adjustments. Validate that the AI integration meets your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">5</div>
+                    <div class="phase-content">
+                        <h3>Full Deployment</h3>
+                        <p>Roll out across your organization with proper training and documentation. Provide support during the transition and monitor adoption rates.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <div class="phase-marker">6</div>
+                    <div class="phase-content">
+                        <h3>Optimization & Scale</h3>
+                        <p>Continuously improve the AI models, expand to additional workflows, and scale integrations as your needs evolve. Regular performance reviews and updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="integrations-section">
+        <div class="container">
+            <h2 class="section-title">Platforms We Integrate With</h2>
+            <p class="section-subtitle">Connect AI to the tools and systems you already use every day.</p>
+            
+            <div class="integrations-grid">
+                <div class="integration-card">
+                    <i class="fab fa-salesforce"></i>
+                    <h4>Salesforce</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Gmail / Outlook</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fab fa-slack"></i>
+                    <h4>Slack</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fab fa-microsoft"></i>
+                    <h4>Microsoft Teams</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Databases</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Analytics Tools</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>E-commerce</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Custom APIs</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fab fa-hubspot"></i>
+                    <h4>HubSpot</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Zapier</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fab fa-google"></i>
+                    <h4>Google Workspace</h4>
+                </div>
+
+                <div class="integration-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Document Systems</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Supercharge Your Workflows?</h2>
+                <p>Let's explore how AI can transform your operations and free your team to focus on what matters most.</p>
+                <a href="https://wa.link/irs4ph" class="btn">Schedule a Workflow Assessment</a>
+            </div>
+        </div>
+    </section>
+
+     <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Gocreative</h3>
+                    <p>We create innovative digital solutions that transform businesses and deliver exceptional results. Let's build something amazing together.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="#" class="social-link" aria-label="Dribbble"><i class="fab fa-dribbble" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="custom-software.html">Custom Software</a></li>
+                        <li><a href="ai-products.html">AI Solutions</a></li>
+                        <li><a href="ai-workflow.html">AI Integration</a></li>
+                        <li><a href="enterprise-software.html">Enterprise Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Our Work</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:gocreativeglobal@gmail.com">hello@gocreative.com</a></li>
+                        <li><a href="tel:+2348085398445">+234 808 539 8445</a></li>
+                        <li>Federal Housing Estate<br>Calabar, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gocreative. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
